@@ -6,6 +6,8 @@
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "test": "jest --watch --runInBand"
   },
   "jest": {
@@ -29,7 +31,7 @@
   },
   "devDependencies": {
     "concurrently": "^5.2.0",
-    "eslint": "^7.6.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
@@ -38,8 +40,8 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.1.4",
     "eslint-plugin-react": "^7.20.5",
-    "jest": "^25.2.7",
-    "mongodb-memory-server": "^6.5.1",
+    "jest": "^24.9.0",
+    "mongodb-memory-server": "^6.6.3",
     "nodemon": "^2.0.4",
     "prettier": "^2.0.5",
     "supertest": "^4.0.2"
