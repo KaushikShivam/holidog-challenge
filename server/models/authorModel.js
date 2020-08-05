@@ -15,7 +15,7 @@ const authorSchema = new mongoose.Schema(
     creator: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: [true, 'Aust must belong to a User'],
+      required: [true, 'Author must belong to a User'],
     },
     books: [
       {
