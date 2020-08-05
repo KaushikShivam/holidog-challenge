@@ -3,7 +3,7 @@ const CustomError = require('./CustomError');
 const handleValidationErr = (err) => {
   const errors = Object.values(err.errors).map((el) => {
     if (el.kind === 'unique') {
-      return `${el.path} already exists`;
+      return `This ${el.path} already exists`;
     }
     return el.message;
   });
