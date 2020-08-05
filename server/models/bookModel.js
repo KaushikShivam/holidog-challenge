@@ -34,6 +34,6 @@ bookSchema.virtual('bookCount').get(function () {
   return this.books.length;
 });
 
-const Author = mongoose.model('Author', bookSchema);
+const Book = mongoose.model('Book', bookSchema);
 
-module.exports = Author;
+module.exports = Book;
