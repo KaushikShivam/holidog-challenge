@@ -15,7 +15,7 @@ exports.getAllAuthors = handleAsync(async (req, res, next) => {
 });
 
 exports.createAuthor = handleAsync(async (req, res, next) => {
-  const author = await Author.create({ ...req.body, artist: req.user._id });
+  const author = await Author.create({ ...req.body, creator: req.user._id });
 
   res.status(201).json({
     status: 'success',
@@ -69,7 +69,7 @@ exports.deleteAuthor = handleAsync(async (req, res, next) => {
   });
 
   if (!author) {
-    return next(new CustomError('No Atuhor found with this ID', 404));
+    return next(new CustomError('No author found with this ID', 404));
   }
 
   res.status(204).json({

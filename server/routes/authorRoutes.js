@@ -9,9 +9,13 @@ const {
 
 const { authenticate } = require('../controllers/authController');
 
+const bookRouter = require('./bookRoutes');
+
 const router = express.Router();
 
 router.use(authenticate);
+
+router.use('/:authorId/books', bookRouter);
 
 router.route('/').get(getAllAuthors).post(createAuthor);
 

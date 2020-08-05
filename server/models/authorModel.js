@@ -17,12 +17,6 @@ const authorSchema = new mongoose.Schema(
       ref: 'User',
       required: [true, 'Author must belong to a User'],
     },
-    books: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: 'Book',
-      },
-    ],
   },
   {
     timestamps: true,
@@ -30,10 +24,6 @@ const authorSchema = new mongoose.Schema(
     toObject: { virtuals: true },
   }
 );
-
-authorSchema.virtual('bookCount').get(function () {
-  return this.books.length;
-});
 
 const Author = mongoose.model('Author', authorSchema);
 
