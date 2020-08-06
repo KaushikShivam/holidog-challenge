@@ -23,9 +23,9 @@ export const signupService = async (formData) => {
  * @param {object} formData Object contains email and password
  * @returns {object} User object
  */
-export const signupService = async (formData) => {
+export const loginService = async (formData) => {
   try {
-    const res = await axios.post(`${BASE_URL}/users/signup`, formData);
+    const res = await axios.post(`${BASE_URL}/users/login`, formData);
     return res.data.data;
   } catch (err) {
     const { message, errors } = err.response.data;
