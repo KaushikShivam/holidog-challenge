@@ -74,3 +74,44 @@ exports.authenticate = handleAsync(async (req, res, next) => {
   req.user = currentUser;
   next();
 });
+
+exports.getAuth = handleAsync(async (req, res, next) => {
+  let token;
+  // 1. Get token and check if it exists
+  if (
+    req.headers.authorization &&
+    req.headers.authorization.startsWith('Bearer')
+  ) {
+    token = req.headers.authorization.split(' ')[1];
+  } else if (req.cookies.jwt) {
+    token = req.cookies.jwt;
+  }
+
+  if (!token) {
+    return res.status(200).json({
+      status: 'success',
+      data: null,
+    });
+  }
+
+  // 2 Verification token
+  const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
+
+  // 3. Check if user exists
+  const freshUser = await User.findById(decoded.id);
+  if (!freshUser) {
+    return res.status(200).json({
+      status: 'success',
+      data: null,
+    });
+  }
+
+  // Send User
+  res.status(200).json({
+    status: 'success',
+    data: {
+      token,
+      user: freshUser,
+    },
+  });
+});

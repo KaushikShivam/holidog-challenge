@@ -19,6 +19,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(cors());
 
 // Mount api router
+// app.get('/test', (req, res, next) => res.json({ message: 'test passed' }));
 app.use('/api/v1', apiRouter);
 
 // Unhandled routes

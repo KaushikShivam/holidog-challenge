@@ -17,3 +17,11 @@ export class ServiceError extends Error {
 }
 
 export const BASE_URL = '/api/v1';
+
+export const handleErrors = (err, dispatch, setAlert) => {
+  if (err.errors.length > 0) {
+    err.errors.forEach((error) => dispatch(setAlert(error, 'error')));
+  } else {
+    dispatch(setAlert(err.message, 'error'));
+  }
+};

@@ -6,6 +6,8 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOG_OUT,
+  USER_LOADED,
+  AUTH_ERROR,
 } from './authTypes';
 
 const INITIAL_STATE = {
@@ -24,6 +26,7 @@ const authReducer = (state = INITIAL_STATE, action) => {
       return { ...state, fetching: true, error: false };
     case SIGNUP_SUCCESS:
     case LOGIN_SUCCESS:
+    case USER_LOADED:
       localStorage.setItem('jwt', payload.token);
       return {
         ...state,
@@ -34,6 +37,8 @@ const authReducer = (state = INITIAL_STATE, action) => {
       };
     case SIGNUP_FAILURE:
     case LOGIN_FAILURE:
+    case AUTH_ERROR:
+      localStorage.removeItem('jwt');
       return {
         ...state,
         fetching: false,

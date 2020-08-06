@@ -12,6 +12,7 @@ export const signupService = async (formData) => {
     const res = await axios.post(`${BASE_URL}/users/signup`, formData);
     return res.data.data;
   } catch (err) {
+    console.log(err.response.data);
     const { message, errors } = err.response.data;
     throw new ServiceError(message, errors);
   }
@@ -26,6 +27,21 @@ export const signupService = async (formData) => {
 export const loginService = async (formData) => {
   try {
     const res = await axios.post(`${BASE_URL}/users/login`, formData);
+    return res.data.data;
+  } catch (err) {
+    const { message, errors } = err.response.data;
+    throw new ServiceError(message, errors);
+  }
+};
+
+/**
+ * Gets the user data if logged in
+ * @function getAuth
+ * @returns {object} object with user data or null
+ */
+export const getAuth = async () => {
+  try {
+    const res = await axios.get(`${BASE_URL}/users/auth`);
     return res.data.data;
   } catch (err) {
     const { message, errors } = err.response.data;

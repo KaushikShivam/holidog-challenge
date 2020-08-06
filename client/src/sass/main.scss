@@ -4,3 +4,11 @@
 @import './base/base';
 @import './base/typography';
 @import './base/utilities';
+
+@import './components/App';
+@import './components/CustomButton';
+@import './components/FormCard';
+@import './components/FormInput';
+
+@import './pages/LoadingPage';
+@import './pages/SignupPage';
