@@ -12,7 +12,6 @@ export const signupService = async (formData) => {
     const res = await axios.post(`${BASE_URL}/users/signup`, formData);
     return res.data.data;
   } catch (err) {
-    console.log(err.response.data);
     const { message, errors } = err.response.data;
     throw new ServiceError(message, errors);
   }
