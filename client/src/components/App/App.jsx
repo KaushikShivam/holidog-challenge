@@ -13,22 +13,23 @@ import {
 import { selectAlert } from './../../redux/alert/alertSelectors';
 
 import { loadUser } from './../../redux/auth/authActions';
-import { removeAlert } from './../../redux/alert/alertActions';
 
 import { setAuthToken } from './../../services/utils';
 
 import AuthRoute from './../../components/AuthRoute/AuthRoute';
+import Navigation from './../../layout/Navigation/Navigation';
 
 import LoadingPage from './../../pages/LoadingPage/LoadingPage';
 const SignupPage = lazy(() => import('./../../pages/SignupPage/SignupPage'));
 const LoginPage = lazy(() => import('./../../pages/LoginPage/LoginPage'));
 const HomePage = lazy(() => import('./../../pages/HomePage/HomePage'));
+const AuthorPage = lazy(() => import('./../../pages/AuthorPage/AuthorPage'));
 
 if (localStorage.jwt) {
   setAuthToken(localStorage.jwt);
 }
 
-const App = ({ currentUser, token, alerts, removeAlert, loadUser }) => {
+const App = ({ currentUser, token, alerts, loadUser }) => {
   useEffect(() => {
     loadUser();
   }, [loadUser]);
@@ -40,7 +41,6 @@ const App = ({ currentUser, token, alerts, removeAlert, loadUser }) => {
         autoClose: 2000,
         closeOnClick: true,
       });
-      removeAlert(id);
     });
   }
 
@@ -50,12 +50,13 @@ const App = ({ currentUser, token, alerts, removeAlert, loadUser }) => {
     }
     return (
       <Fragment>
+        {currentUser && <Navigation />}
         <ToastContainer />
-
         <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
           <AuthRoute path="/" component={HomePage} />
+          <AuthRoute path="/authors" component={AuthorPage} />
         </Switch>
       </Fragment>
     );
@@ -76,6 +77,5 @@ const mapStateToProps = createStructuredSelector({
 
 const mapDispatchToProps = (dispatch) => ({
   loadUser: () => dispatch(loadUser()),
-  removeAlert: (id) => dispatch(removeAlert(id)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(App);
