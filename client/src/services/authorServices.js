@@ -66,14 +66,14 @@ export const updateAuthorService = async (id, formData) => {
 };
 
 /**
- * update a specific author
+ * delete a specific author
  * @function deleteAuthorsService
  * @param {string} id
  * @returns {string} returns success message
  */
-export const fetchAllAuthorService = async (id, formData) => {
+export const deleteAuthorService = async (id, formData) => {
   try {
-    const res = await axios.patch(`${BASE_URL}/authors/${id}`, formData);
+    const res = await axios.delete(`${BASE_URL}/authors/${id}`, formData);
     return res.data.status;
   } catch (err) {
     const { message, errors } = err.response.data;

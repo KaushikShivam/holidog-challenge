@@ -1,0 +1,56 @@
+import {
+  FETCH_ALL_AUTHORS,
+  CREATE_AUTHOR,
+  FETCH_AUTHOR,
+  UPDATE_AUTHOR,
+  DELETE_AUTHOR,
+  CLEAR_AUTHORS,
+} from './authorTypes';
+
+const INITIAL_STATE = {
+  authors: [],
+  singleAuthor: {},
+};
+
+const authorReducer = (state = INITIAL_STATE, action) => {
+  const { type, payload } = action;
+
+  switch (type) {
+    case FETCH_ALL_AUTHORS:
+      return {
+        ...state,
+        authors: payload,
+      };
+    case CREATE_AUTHOR:
+      return {
+        ...state,
+        authors: [payload, ...state.authors],
+      };
+    case FETCH_AUTHOR:
+      return {
+        ...state,
+        singleAuthor: payload,
+      };
+    case UPDATE_AUTHOR:
+      return {
+        ...state,
+        posts: state.posts.map((post) =>
+          post.id === payload.id ? payload : post
+        ),
+      };
+    case DELETE_AUTHOR:
+      return {
+        ...state,
+        posts: state.posts.filter((post) => post.id !== payload),
+      };
+    case CLEAR_AUTHORS:
+      return {
+        ...state,
+        posts: [],
+      };
+    default:
+      return state;
+  }
+};
+
+export default authorReducer;

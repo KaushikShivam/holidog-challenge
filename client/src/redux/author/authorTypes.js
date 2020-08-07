@@ -1,0 +1,6 @@
+export const FETCH_ALL_AUTHORS = 'FETCH_ALL_AUTHORS';
+export const CREATE_AUTHOR = 'CREATE_AUTHOR';
+export const FETCH_AUTHOR = 'FETCH_AUTHOR';
+export const UPDATE_AUTHOR = 'UPDATE_AUTHOR';
+export const DELETE_AUTHOR = 'DELETE_AUTHOR';
+export const CLEAR_AUTHORS = 'CLEAR_AUTHORS';
