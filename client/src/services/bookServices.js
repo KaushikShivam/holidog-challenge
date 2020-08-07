@@ -73,7 +73,7 @@ export const updateBookService = async (id, formData) => {
  */
 export const deleteBookService = async (id, formData) => {
   try {
-    const res = await axios.delete(`${BASE_URL}/authors/${id}`, formData);
+    const res = await axios.delete(`${BASE_URL}/books/${id}`, formData);
     return res.data.status;
   } catch (err) {
     const { message, errors } = err.response.data;

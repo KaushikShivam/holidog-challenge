@@ -30,8 +30,6 @@ export const fetchAllAuthors = () => async (dispatch) => {
       payload: res,
     });
   } catch (err) {
-    console.log(err);
-
     handleErrors(err, dispatch, setAlert);
   }
 };
