@@ -3,7 +3,9 @@ const handleAsync = require('../utils/handleAsync');
 const CustomError = require('../utils/CustomError');
 
 exports.getAllAuthors = handleAsync(async (req, res, next) => {
-  const authors = await Author.find({ creator: req.user._id });
+  const authors = await Author.find({ creator: req.user._id }).sort({
+    createdAt: -1,
+  });
 
   res.status(200).json({
     status: 'success',

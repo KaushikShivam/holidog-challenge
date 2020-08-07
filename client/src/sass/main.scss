@@ -6,11 +6,14 @@
 @import './base/utilities';
 
 @import './components/App';
+@import './components/AuthorForm';
+@import './components/AuthorItem';
 @import './components/CustomButton';
 @import './components/FormCard';
 @import './components/FormInput';
 
 @import './layout/Navigation';
 
+@import './pages/AuthorPage';
 @import './pages/LoadingPage';
 @import './pages/SignupPage';

@@ -55,7 +55,7 @@ const App = ({ currentUser, token, alerts, loadUser }) => {
         <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
-          <AuthRoute path="/" component={HomePage} />
+          <AuthRoute exact path="/" component={HomePage} />
           <AuthRoute path="/authors" component={AuthorPage} />
         </Switch>
       </Fragment>

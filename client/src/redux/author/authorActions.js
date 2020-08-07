@@ -8,7 +8,7 @@ import {
 } from './authorTypes';
 
 import {
-  fetchAllAuthorService,
+  fetchAllAuthorsService,
   createAuthorService,
   fetchAuthorService,
   updateAuthorService,
@@ -17,20 +17,21 @@ import {
 
 import { setAlert } from './../alert/alertActions';
 
-import { setAuthToken, handleErrors } from './../../services/utils';
+import { handleErrors } from './../../services/utils';
 
 export const fetchAllAuthors = () => async (dispatch) => {
   try {
     dispatch({
       type: CLEAR_AUTHORS,
-      payload: res,
     });
-    const res = await fetchAllAuthorService();
+    const res = await fetchAllAuthorsService();
     dispatch({
       type: FETCH_ALL_AUTHORS,
       payload: res,
     });
   } catch (err) {
+    console.log(err);
+
     handleErrors(err, dispatch, setAlert);
   }
 };
@@ -73,7 +74,7 @@ export const updateAuthor = (id, formData) => async (dispatch) => {
 
 export const deleteAuthor = (id) => async (dispatch) => {
   try {
-    await deleteAuthorService(id, formData);
+    await deleteAuthorService(id);
     dispatch({
       type: DELETE_AUTHOR,
       payload: id,

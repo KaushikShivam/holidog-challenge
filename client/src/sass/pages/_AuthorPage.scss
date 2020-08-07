@@ -1,0 +1,11 @@
+.AuthorPage {
+  height: 100%;
+  padding: 2rem 4rem;
+
+  &__create {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+}

@@ -34,19 +34,19 @@ const authorReducer = (state = INITIAL_STATE, action) => {
     case UPDATE_AUTHOR:
       return {
         ...state,
-        posts: state.posts.map((post) =>
-          post.id === payload.id ? payload : post
+        authors: state.authors.map((author) =>
+          author.id === payload.id ? payload : author
         ),
       };
     case DELETE_AUTHOR:
       return {
         ...state,
-        posts: state.posts.filter((post) => post.id !== payload),
+        authors: state.authors.filter((author) => author.id !== payload),
       };
     case CLEAR_AUTHORS:
       return {
         ...state,
-        posts: [],
+        authors: [],
       };
     default:
       return state;
