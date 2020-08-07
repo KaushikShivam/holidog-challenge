@@ -5,7 +5,7 @@ const FormInput = ({ valid, error, fieldProps, ...otherProps }) => {
     <div className="FormInput mb-sm">
       {error && <span>{error}</span>}
       <input
-        className={`FormInput ${
+        className={`${
           typeof valid === 'boolean' ? (valid ? 'valid' : 'invalid') : ''
         }`}
         {...otherProps}

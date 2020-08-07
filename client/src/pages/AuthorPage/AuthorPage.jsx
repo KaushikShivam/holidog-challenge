@@ -39,9 +39,9 @@ const AuthorPage = ({
     setFormOpen(false);
   };
 
-  const handleSubmit = (formData, editing = false, existingUserId = null) => {
+  const handleSubmit = (formData, editing = false, existingAuthorId = null) => {
     if (editing) {
-      updateAuthor(existingUserId, formData);
+      updateAuthor(existingAuthorId, formData);
     } else {
       createAuthor(formData);
     }

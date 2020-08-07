@@ -22,8 +22,9 @@ import Navigation from './../../layout/Navigation/Navigation';
 import LoadingPage from './../../pages/LoadingPage/LoadingPage';
 const SignupPage = lazy(() => import('./../../pages/SignupPage/SignupPage'));
 const LoginPage = lazy(() => import('./../../pages/LoginPage/LoginPage'));
-const HomePage = lazy(() => import('./../../pages/HomePage/HomePage'));
+
 const AuthorPage = lazy(() => import('./../../pages/AuthorPage/AuthorPage'));
+const BookPage = lazy(() => import('./../../pages/BookPage/BookPage'));
 
 if (localStorage.jwt) {
   setAuthToken(localStorage.jwt);
@@ -55,8 +56,9 @@ const App = ({ currentUser, token, alerts, loadUser }) => {
         <Switch>
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
-          <AuthRoute exact path="/" component={HomePage} />
+          <AuthRoute exact path="/" component={BookPage} />
           <AuthRoute path="/authors" component={AuthorPage} />
+          <AuthRoute path="/books" component={BookPage} />
         </Switch>
       </Fragment>
     );

@@ -11,8 +11,11 @@ exports.getAllBooks = handleAsync(async (req, res, next) => {
   const queryBody = { creator: req.user._id };
   if (req.body.author) queryBody.author = req.body.author;
 
-  const books = await Book.find(queryBody);
-
+  const books = await Book.find(queryBody)
+    .sort({
+      createdAt: -1,
+    })
+    .populate({ path: 'author', select: 'id firstName lastName' });
   res.status(200).json({
     status: 'success',
     results: books.length,

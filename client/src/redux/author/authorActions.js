@@ -21,9 +21,6 @@ import { handleErrors } from './../../services/utils';
 
 export const fetchAllAuthors = () => async (dispatch) => {
   try {
-    dispatch({
-      type: CLEAR_AUTHORS,
-    });
     const res = await fetchAllAuthorsService();
     dispatch({
       type: FETCH_ALL_AUTHORS,

@@ -21,9 +21,6 @@ import { handleErrors } from './../../services/utils';
 
 export const fetchAllBooks = () => async (dispatch) => {
   try {
-    dispatch({
-      type: CLEAR_BOOKS,
-    });
     const res = await fetchAllBooksService();
     dispatch({
       type: FETCH_ALL_BOOKS,
@@ -70,7 +67,7 @@ export const updateBook = (id, formData) => async (dispatch) => {
   }
 };
 
-export const deleteAuthor = (id) => async (dispatch) => {
+export const deleteBook = (id) => async (dispatch) => {
   try {
     await deleteBookService(id);
     dispatch({

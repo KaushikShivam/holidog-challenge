@@ -30,10 +30,6 @@ const bookSchema = new mongoose.Schema(
   }
 );
 
-bookSchema.virtual('bookCount').get(function () {
-  return this.books.length;
-});
-
 const Book = mongoose.model('Book', bookSchema);
 
 module.exports = Book;
