@@ -50,7 +50,7 @@ export const fetchAuthorService = async (id) => {
 
 /**
  * update a specific author
- * @function updateAuthorsService
+ * @function updateAuthorService
  * @param {string} id
  * @param {object} formData data to update
  * @returns {object} returns author object
@@ -67,7 +67,7 @@ export const updateAuthorService = async (id, formData) => {
 
 /**
  * delete a specific author
- * @function deleteAuthorsService
+ * @function deleteAuthorService
  * @param {string} id
  * @returns {string} returns success message
  */
