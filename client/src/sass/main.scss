@@ -15,9 +15,10 @@
 @import './components/FormInput';
 @import './components/FormSelect';
 
+@import './layout/common';
 @import './layout/Navigation';
 
 @import './pages/AuthorPage';
-@import './pages/BookPage';
+@import './pages/BookDetailPage';
 @import './pages/LoadingPage';
 @import './pages/SignupPage';

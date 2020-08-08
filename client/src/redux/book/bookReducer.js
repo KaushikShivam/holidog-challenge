@@ -9,7 +9,7 @@ import {
 
 const INITIAL_STATE = {
   books: [],
-  singleBook: {},
+  singleBook: null,
 };
 
 const bookReducer = (state = INITIAL_STATE, action) => {

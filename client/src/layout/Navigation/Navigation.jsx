@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -8,9 +9,9 @@ import CustomButton from './../../components/CustomButton/CustomButton';
 
 const Navigation = ({ logout }) => {
   return (
-    <div className="Navigation">
+    <nav className="Navigation">
       <div className="Navigation__left">
-        <h1 className="heading-1 color-blue">BookShelf</h1>
+        <h2 className="heading-1 color-blue">BookShelf</h2>
         <Link className="Navigation__link link" to="/">
           Books
         </Link>
@@ -19,8 +20,12 @@ const Navigation = ({ logout }) => {
         </Link>
       </div>
       <CustomButton onClick={logout}>Log out</CustomButton>
-    </div>
+    </nav>
   );
+};
+
+Navigation.propTypes = {
+  logout: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

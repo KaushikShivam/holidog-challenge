@@ -4,7 +4,6 @@ import {
   FETCH_AUTHOR,
   UPDATE_AUTHOR,
   DELETE_AUTHOR,
-  CLEAR_AUTHORS,
 } from './authorTypes';
 
 import {

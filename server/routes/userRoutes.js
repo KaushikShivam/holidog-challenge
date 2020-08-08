@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post('/signup', signup);
 router.post('/login', login);
-router.get('/auth', getAuth);
+router.post('/auth', getAuth);
 
 module.exports = router;

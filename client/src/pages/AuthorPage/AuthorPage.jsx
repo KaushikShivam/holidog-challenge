@@ -50,7 +50,7 @@ const AuthorPage = ({
   };
 
   return (
-    <main className="AuthorPage">
+    <main className="ui-offset">
       {formOpen && (
         <AuthorForm
           existingAuthor={existingAuthor}
@@ -58,13 +58,13 @@ const AuthorPage = ({
           handleSubmit={handleSubmit}
         />
       )}
-      <div className="AuthorPage__create">
+      <div className="create-bar">
         <h2 className="heading-2 color-blue">Create an Author</h2>
         <CustomButton onClick={() => setFormOpen(!formOpen)}>
           Create Author
         </CustomButton>
       </div>
-      <div className="AuthorPage__authors">
+      <div>
         {authors.map((author) => (
           <AuthorItem
             key={author.id}

@@ -40,7 +40,7 @@ export const loginService = async (formData) => {
  */
 export const getAuth = async () => {
   try {
-    const res = await axios.get(`${BASE_URL}/users/auth`);
+    const res = await axios.post(`${BASE_URL}/users/auth`);
     return res.data.data;
   } catch (err) {
     const { message, errors } = err.response.data;

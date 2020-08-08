@@ -22,16 +22,21 @@ import Navigation from './../../layout/Navigation/Navigation';
 import LoadingPage from './../../pages/LoadingPage/LoadingPage';
 const SignupPage = lazy(() => import('./../../pages/SignupPage/SignupPage'));
 const LoginPage = lazy(() => import('./../../pages/LoginPage/LoginPage'));
-
 const AuthorPage = lazy(() => import('./../../pages/AuthorPage/AuthorPage'));
+const AuthorDetailPage = lazy(() =>
+  import('./../../pages/AuthorDetailPage/AuthorDetailPage')
+);
 const BookPage = lazy(() => import('./../../pages/BookPage/BookPage'));
-
-if (localStorage.jwt) {
-  setAuthToken(localStorage.jwt);
-}
+const BookDetailPage = lazy(() =>
+  import('./../../pages/BookDetailPage/BookDetailPage')
+);
+const NotFoundPage = lazy(() =>
+  import('./../../pages/NotFoundPage/NotFoundPage')
+);
 
 const App = ({ currentUser, token, alerts, loadUser }) => {
   useEffect(() => {
+    setAuthToken(localStorage.jwt);
     loadUser();
   }, [loadUser]);
 
@@ -57,8 +62,11 @@ const App = ({ currentUser, token, alerts, loadUser }) => {
           <Route path="/login" component={LoginPage} />
           <Route path="/signup" component={SignupPage} />
           <AuthRoute exact path="/" component={BookPage} />
-          <AuthRoute path="/authors" component={AuthorPage} />
-          <AuthRoute path="/books" component={BookPage} />
+          <AuthRoute exact path="/authors" component={AuthorPage} />
+          <AuthRoute path="/authors/:authorId" component={AuthorDetailPage} />
+          <AuthRoute exact path="/books" component={BookPage} />
+          <AuthRoute path="/books/:bookId" component={BookDetailPage} />
+          <Route component={NotFoundPage} />
         </Switch>
       </Fragment>
     );

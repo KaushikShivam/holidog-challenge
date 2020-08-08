@@ -26,7 +26,10 @@ exports.getAllBooks = handleAsync(async (req, res, next) => {
 });
 
 exports.createBook = handleAsync(async (req, res, next) => {
-  const book = await Book.create({ ...req.body, creator: req.user._id });
+  const book = await Book.create({
+    ...req.body,
+    creator: req.user._id,
+  });
 
   res.status(201).json({
     status: 'success',
@@ -40,7 +43,7 @@ exports.getBook = handleAsync(async (req, res, next) => {
   const book = await Book.findOne({
     _id: req.params.id,
     creator: req.user._id,
-  });
+  }).populate({ path: 'author', select: 'id firstName lastName' });
 
   if (!book) {
     return next(new CustomError('No book found with this ID', 404));
@@ -59,7 +62,7 @@ exports.updateBook = handleAsync(async (req, res, next) => {
     { _id: req.params.id, creator: req.user._id },
     req.body,
     { new: true, runValidators: true }
-  );
+  ).populate({ path: 'author', select: 'id firstName lastName' });
 
   if (!book) {
     return next(new CustomError('No book found with this ID', 404));

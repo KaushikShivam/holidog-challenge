@@ -9,7 +9,7 @@ import {
 
 const INITIAL_STATE = {
   authors: [],
-  singleAuthor: {},
+  singleAuthor: null,
 };
 
 const authorReducer = (state = INITIAL_STATE, action) => {

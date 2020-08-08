@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -56,7 +57,7 @@ const BookPage = ({
   };
 
   return (
-    <main className="BookPage">
+    <main className="ui-offset">
       {formOpen && (
         <BookForm
           existingBook={existingBook}
@@ -65,7 +66,7 @@ const BookPage = ({
           authors={authors}
         />
       )}
-      <div className="BookPage__create">
+      <div className="create-bar">
         <h2 className="heading-2 color-blue">Create a Book</h2>
         <CustomButton onClick={() => setFormOpen(!formOpen)}>
           Create Book
@@ -83,6 +84,16 @@ const BookPage = ({
       </div>
     </main>
   );
+};
+
+BookPage.propTypes = {
+  books: PropTypes.array.isRequired,
+  authors: PropTypes.array.isRequired,
+  createBook: PropTypes.func.isRequired,
+  fetchAllBooks: PropTypes.func.isRequired,
+  fetchAllAuthors: PropTypes.func.isRequired,
+  updateBook: PropTypes.func.isRequired,
+  deleteBook: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

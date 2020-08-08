@@ -77,7 +77,6 @@ exports.authenticate = handleAsync(async (req, res, next) => {
 
 exports.getAuth = handleAsync(async (req, res, next) => {
   let token;
-  // 1. Get token and check if it exists
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith('Bearer')
@@ -92,10 +91,8 @@ exports.getAuth = handleAsync(async (req, res, next) => {
     });
   }
 
-  // 2 Verification token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
 
-  // 3. Check if user exists
   const freshUser = await User.findById(decoded.id);
   if (!freshUser) {
     return res.status(200).json({
@@ -104,7 +101,6 @@ exports.getAuth = handleAsync(async (req, res, next) => {
     });
   }
 
-  // Send User
   res.status(200).json({
     status: 'success',
     data: {

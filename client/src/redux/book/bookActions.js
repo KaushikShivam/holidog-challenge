@@ -4,7 +4,6 @@ import {
   FETCH_BOOK,
   UPDATE_BOOK,
   DELETE_BOOK,
-  CLEAR_BOOKS,
 } from './bookTypes';
 
 import {

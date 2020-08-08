@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { useHistory } from 'react-router-dom';
@@ -85,6 +86,12 @@ const LoginPage = ({ currentUser, fetching, login }) => {
       </div>
     </main>
   );
+};
+
+LoginPage.propTypes = {
+  currentUser: PropTypes.object,
+  fetching: PropTypes.bool.isRequired,
+  login: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

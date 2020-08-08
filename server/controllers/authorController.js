@@ -1,6 +1,7 @@
 const Author = require('../models/authorModel');
 const handleAsync = require('../utils/handleAsync');
 const CustomError = require('../utils/CustomError');
+const Book = require('../models/bookModel');
 
 exports.getAllAuthors = handleAsync(async (req, res, next) => {
   const authors = await Author.find({ creator: req.user._id }).sort({
@@ -73,6 +74,7 @@ exports.deleteAuthor = handleAsync(async (req, res, next) => {
   if (!author) {
     return next(new CustomError('No author found with this ID', 404));
   }
+  await Book.deleteMany({ author: author._id });
 
   res.status(204).json({
     status: 'success',

@@ -20,32 +20,6 @@ import { setAuthToken, handleErrors } from './../../services/utils';
 
 import { setAlert } from './../alert/alertActions';
 
-export const signup = (formData) => async (dispatch) => {
-  try {
-    dispatch({ type: SIGNUP_START });
-    const res = await signupService(formData);
-    dispatch({ type: SIGNUP_SUCCESS, payload: res });
-  } catch (err) {
-    handleErrors(err, dispatch, setAlert);
-    dispatch({ type: SIGNUP_FAILURE });
-  }
-};
-
-export const login = (formData) => async (dispatch) => {
-  try {
-    dispatch({ type: LOGIN_START });
-    const res = await loginService(formData);
-    dispatch({ type: LOGIN_SUCCESS, payload: res });
-  } catch (err) {
-    handleErrors(err, dispatch, setAlert);
-    dispatch({ type: LOGIN_FAILURE });
-  }
-};
-
-export const logout = () => (dispatch) => {
-  dispatch({ type: LOG_OUT });
-};
-
 export const loadUser = () => async (dispatch) => {
   if (localStorage.jwt) {
     setAuthToken(localStorage.jwt);
@@ -69,4 +43,32 @@ export const loadUser = () => async (dispatch) => {
       type: AUTH_ERROR,
     });
   }
+};
+
+export const signup = (formData) => async (dispatch) => {
+  try {
+    dispatch({ type: SIGNUP_START });
+    const res = await signupService(formData);
+    dispatch({ type: SIGNUP_SUCCESS, payload: res });
+    dispatch(loadUser());
+  } catch (err) {
+    handleErrors(err, dispatch, setAlert);
+    dispatch({ type: SIGNUP_FAILURE });
+  }
+};
+
+export const login = (formData) => async (dispatch) => {
+  try {
+    dispatch({ type: LOGIN_START });
+    const res = await loginService(formData);
+    dispatch({ type: LOGIN_SUCCESS, payload: res });
+    dispatch(loadUser());
+  } catch (err) {
+    handleErrors(err, dispatch, setAlert);
+    dispatch({ type: LOGIN_FAILURE });
+  }
+};
+
+export const logout = () => (dispatch) => {
+  dispatch({ type: LOG_OUT });
 };
