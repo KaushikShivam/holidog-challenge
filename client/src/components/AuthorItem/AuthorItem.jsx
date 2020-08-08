@@ -25,7 +25,7 @@ const AuthorItem = ({ author, handleEdit, handleDelete }) => {
 };
 
 AuthorItem.propTypes = {
-  book: PropTypes.array.isRequired,
+  author: PropTypes.object.isRequired,
   handleEdit: PropTypes.func.isRequired,
   handleDelete: PropTypes.func.isRequired,
 };

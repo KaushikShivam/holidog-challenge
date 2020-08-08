@@ -78,7 +78,7 @@ const BookForm = ({ existingBook, handleSubmit, handleClose, authors }) => {
 };
 
 BookForm.propTypes = {
-  author: PropTypes.array.isRequired,
+  author: PropTypes.array,
   existingBook: PropTypes.object,
   handleSubmit: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired,

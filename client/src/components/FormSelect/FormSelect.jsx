@@ -14,7 +14,11 @@ const FormSelect = ({ valid, error, authors, fieldProps, ...otherProps }) => {
         {...otherProps}
         {...fieldProps}
       >
-        <option value="">Please select the Author</option>
+        <option value="">{`${
+          authors.length > 0
+            ? 'Please select an author'
+            : 'Create an author first'
+        }`}</option>
 
         {authors.map((author) => (
           <option

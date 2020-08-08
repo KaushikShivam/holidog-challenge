@@ -26,10 +26,16 @@ exports.getAllBooks = handleAsync(async (req, res, next) => {
 });
 
 exports.createBook = handleAsync(async (req, res, next) => {
-  const book = await Book.create({
+  let book = await Book.create({
     ...req.body,
     creator: req.user._id,
   });
+  book = await book
+    .populate({
+      path: 'author',
+      select: 'id firstName lastName',
+    })
+    .execPopulate();
 
   res.status(201).json({
     status: 'success',
