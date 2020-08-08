@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const AuthorItem = ({ author, handleEdit, handleDelete }) => {
@@ -21,6 +22,12 @@ const AuthorItem = ({ author, handleEdit, handleDelete }) => {
       </div>
     </div>
   );
+};
+
+AuthorItem.propTypes = {
+  book: PropTypes.array.isRequired,
+  handleEdit: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default AuthorItem;

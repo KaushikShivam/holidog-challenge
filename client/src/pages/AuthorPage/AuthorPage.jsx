@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
@@ -76,6 +77,14 @@ const AuthorPage = ({
       </div>
     </main>
   );
+};
+
+AuthorPage.propTypes = {
+  authors: PropTypes.array.isRequired,
+  createAuthor: PropTypes.func.isRequired,
+  fetchAllAuthors: PropTypes.func.isRequired,
+  updateAuthor: PropTypes.func.isRequired,
+  deleteAuthor: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

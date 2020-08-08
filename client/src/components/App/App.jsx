@@ -1,4 +1,5 @@
 import React, { useEffect, Suspense, lazy, Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Switch, Route } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
@@ -77,6 +78,13 @@ const App = ({ currentUser, token, alerts, loadUser }) => {
       <Suspense fallback={<LoadingPage />}>{renderApp()}</Suspense>
     </div>
   );
+};
+
+App.propTypes = {
+  currentUser: PropTypes.object,
+  token: PropTypes.string,
+  alerts: PropTypes.array.isRequired,
+  loadUser: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

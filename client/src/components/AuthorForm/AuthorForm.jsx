@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 
 import FormInput from './../FormInput/FormInput';
@@ -65,6 +66,12 @@ const AuthorForm = ({ existingAuthor, handleSubmit, handleClose }) => {
       </div>
     </div>
   );
+};
+
+AuthorForm.propTypes = {
+  existingAuthor: PropTypes.object,
+  handleSubmit: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default AuthorForm;

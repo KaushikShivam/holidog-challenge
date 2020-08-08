@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FormInput = ({ valid, error, fieldProps, ...otherProps }) => {
   return (
@@ -13,6 +14,11 @@ const FormInput = ({ valid, error, fieldProps, ...otherProps }) => {
       />
     </div>
   );
+};
+
+FormInput.propTypes = {
+  valid: PropTypes.bool,
+  error: PropTypes.string,
 };
 
 export default FormInput;

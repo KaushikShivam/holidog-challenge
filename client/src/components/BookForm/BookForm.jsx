@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 
 import FormInput from './../FormInput/FormInput';
@@ -74,6 +75,13 @@ const BookForm = ({ existingBook, handleSubmit, handleClose, authors }) => {
       </div>
     </div>
   );
+};
+
+BookForm.propTypes = {
+  author: PropTypes.array.isRequired,
+  existingBook: PropTypes.object,
+  handleSubmit: PropTypes.func.isRequired,
+  handleClose: PropTypes.func.isRequired,
 };
 
 export default BookForm;

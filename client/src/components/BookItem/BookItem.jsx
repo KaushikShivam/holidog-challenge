@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const BookItem = ({ book, handleEdit, handleDelete }) => {
@@ -27,6 +28,12 @@ const BookItem = ({ book, handleEdit, handleDelete }) => {
       </div>
     </div>
   );
+};
+
+BookItem.propTypes = {
+  book: PropTypes.array.isRequired,
+  handleEdit: PropTypes.object,
+  handleDelete: PropTypes.func.isRequired,
 };
 
 export default BookItem;

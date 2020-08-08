@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const FormSelect = ({ valid, error, authors, fieldProps, ...otherProps }) => {
   return (
@@ -24,6 +25,12 @@ const FormSelect = ({ valid, error, authors, fieldProps, ...otherProps }) => {
       </select>
     </div>
   );
+};
+
+FormSelect.propTypes = {
+  valid: PropTypes.bool,
+  error: PropTypes.string,
+  authors: PropTypes.array.isRequired,
 };
 
 export default FormSelect;
