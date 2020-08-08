@@ -2,14 +2,17 @@
 /* eslint-disable no-restricted-syntax */
 const { MongoMemoryServer } = require('mongodb-memory-server');
 const mongoose = require('mongoose');
-
-// const app = require('../app');
+const {
+  JWT_SECRET,
+  JWT_EXPIRES_IN,
+  NODE_ENV,
+} = require('./fixtures/constants');
 
 let mongo;
 beforeAll(async () => {
-  process.env.JWT_SECRET = 'asdfasdf';
-  process.env.JWT_EXPIRES_IN = '90d';
-  process.env.NODE_ENV = 'production';
+  process.env.JWT_SECRET = JWT_SECRET;
+  process.env.JWT_EXPIRES_IN = JWT_EXPIRES_IN;
+  process.env.NODE_ENV = NODE_ENV;
 
   mongo = new MongoMemoryServer();
   const mongoUri = await mongo.getUri();
