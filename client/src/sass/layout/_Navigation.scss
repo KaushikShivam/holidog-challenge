@@ -6,9 +6,19 @@
   justify-content: space-between;
   background-color: $color-white;
 
+  @include respond(phone) {
+    padding: 2rem 2rem;
+  }
+
   &__left {
     display: flex;
     align-items: center;
+  }
+
+  &__heading {
+    @include respond(phone) {
+      display: none;
+    }
   }
 
   &__link {

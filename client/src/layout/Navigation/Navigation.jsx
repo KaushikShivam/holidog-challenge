@@ -11,7 +11,7 @@ const Navigation = ({ logout }) => {
   return (
     <nav className="Navigation">
       <div className="Navigation__left">
-        <Link className="Navigation__link" to="/">
+        <Link className="Navigation__link Navigation__heading" to="/">
           <h2 className="heading-1 color-blue">BookShelf</h2>
         </Link>
         <Link className="Navigation__link" to="/">

@@ -24,7 +24,7 @@ const AuthorDetailPage = ({ author, fetchAuthor }) => {
           <h2 className="heading-3 color-blue">{`Last Name: ${author.lastName}`}</h2>
           <h3 className="heading-2">Books</h3>
           {author.books.map((book) => (
-            <div className="card" key={book.id}>
+            <div className="card mb-sm" key={book.id}>
               <p className="heading-4 color-blue">Name: {book.name}</p>
               <p className="heading-4 color-blue">ISBN: {book.isbn}</p>
             </div>

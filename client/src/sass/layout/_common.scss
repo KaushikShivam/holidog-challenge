@@ -1,6 +1,9 @@
 .ui-offset {
   height: 100%;
   padding: 2rem 4rem;
+  @include respond(phone) {
+    padding: 2rem 2rem;
+  }
 }
 
 .create-bar {
@@ -8,6 +11,12 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 2rem;
+
+  @include respond(phone) {
+    h2 {
+      display: none;
+    }
+  }
 }
 
 .center-content {
