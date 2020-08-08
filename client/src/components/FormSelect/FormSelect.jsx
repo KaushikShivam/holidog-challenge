@@ -34,7 +34,7 @@ const FormSelect = ({ valid, error, authors, fieldProps, ...otherProps }) => {
 FormSelect.propTypes = {
   valid: PropTypes.bool,
   error: PropTypes.string,
-  authors: PropTypes.array.isRequired,
+  authors: PropTypes.array,
 };
 
 export default FormSelect;

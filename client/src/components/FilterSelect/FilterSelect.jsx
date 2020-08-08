@@ -19,13 +19,17 @@ const FilterSelect = ({ authors, fetchAllAuthors, handleFilter, filter }) => {
 
   return (
     <div className="FormSelect mr-lg">
-      <select name="filter" title="Select Author" onChange={handleSelect}>
+      <select
+        name="filter"
+        title="Select Author"
+        onChange={handleSelect}
+        defaultValue={filter}
+      >
         <option value="">All</option>
         {authors.map((author) => (
           <option
             value={author.id}
             key={author.id}
-            selected={author.id === filter}
           >{`${author.firstName} ${author.lastName}`}</option>
         ))}
       </select>

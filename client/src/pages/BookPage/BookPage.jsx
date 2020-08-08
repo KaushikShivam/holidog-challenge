@@ -12,6 +12,8 @@ import {
 
 import { selectBooks, selectFilter } from './../../redux/book/bookSelectors';
 
+import { selectAuthors } from './../../redux/author/authorSelectors';
+
 import BookForm from './../../components/BookForm/BookForm';
 import BookItem from './../../components/BookItem/BookItem';
 import CustomButton from '../../components/CustomButton/CustomButton';
@@ -88,6 +90,7 @@ const BookPage = ({
 
 BookPage.propTypes = {
   books: PropTypes.array.isRequired,
+  authors: PropTypes.array.isRequired,
   createBook: PropTypes.func.isRequired,
   fetchAllBooks: PropTypes.func.isRequired,
   updateBook: PropTypes.func.isRequired,
@@ -97,6 +100,7 @@ BookPage.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   books: selectBooks,
+  authors: selectAuthors,
   filter: selectFilter,
 });
 
