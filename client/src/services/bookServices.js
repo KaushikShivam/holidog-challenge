@@ -22,9 +22,13 @@ export const createBookService = async (formData) => {
  * @function fetchAllBooksService
  * @returns {array} array of books
  */
-export const fetchAllBooksService = async () => {
+export const fetchAllBooksService = async (author = '') => {
   try {
-    const res = await axios.get(`${BASE_URL}/books`);
+    const res = await axios.get(`${BASE_URL}/books`, {
+      params: {
+        author,
+      },
+    });
     return res.data.data.books;
   } catch (err) {
     const { message, errors } = err.response.data;

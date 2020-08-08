@@ -4,3 +4,4 @@ export const FETCH_BOOK = 'FETCH_BOOK';
 export const UPDATE_BOOK = 'UPDATE_BOOK';
 export const DELETE_BOOK = 'DELETE_BOOK';
 export const CLEAR_BOOKS = 'CLEAR_BOOKS';
+export const SELECT_FILTER = 'SELECT_FILTER';

@@ -4,6 +4,7 @@ import {
   FETCH_BOOK,
   UPDATE_BOOK,
   DELETE_BOOK,
+  SELECT_FILTER,
 } from './bookTypes';
 
 import {
@@ -18,9 +19,9 @@ import { setAlert } from './../alert/alertActions';
 
 import { handleErrors } from './../../services/utils';
 
-export const fetchAllBooks = () => async (dispatch) => {
+export const fetchAllBooks = (filter = '') => async (dispatch) => {
   try {
-    const res = await fetchAllBooksService();
+    const res = await fetchAllBooksService(filter);
     dispatch({
       type: FETCH_ALL_BOOKS,
       payload: res,
@@ -28,6 +29,11 @@ export const fetchAllBooks = () => async (dispatch) => {
   } catch (err) {
     handleErrors(err, dispatch, setAlert);
   }
+};
+
+export const handleFilter = (filter) => async (dispatch) => {
+  dispatch({ type: SELECT_FILTER, payload: filter });
+  dispatch(fetchAllBooks(filter));
 };
 
 export const createBook = (formData) => async (dispatch) => {

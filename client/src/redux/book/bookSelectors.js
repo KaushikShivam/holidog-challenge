@@ -8,3 +8,5 @@ export const selectSingleBook = createSelector(
   [selecBook],
   (book) => book.singleBook
 );
+
+export const selectFilter = createSelector([selecBook], (book) => book.filter);

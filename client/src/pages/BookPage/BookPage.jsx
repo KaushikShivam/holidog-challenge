@@ -10,31 +10,28 @@ import {
   deleteBook,
 } from './../../redux/book/bookActions';
 
-import { fetchAllAuthors } from './../../redux/author/authorActions';
-
-import { selectBooks } from './../../redux/book/bookSelectors';
-import { selectAuthors } from './../../redux/author/authorSelectors';
+import { selectBooks, selectFilter } from './../../redux/book/bookSelectors';
 
 import BookForm from './../../components/BookForm/BookForm';
 import BookItem from './../../components/BookItem/BookItem';
 import CustomButton from '../../components/CustomButton/CustomButton';
+import FilterSelect from '../../components/FilterSelect/FilterSelect';
 
 const BookPage = ({
   books,
   authors,
   createBook,
   fetchAllBooks,
-  fetchAllAuthors,
   updateBook,
   deleteBook,
+  filter,
 }) => {
   const [formOpen, setFormOpen] = useState(false);
   const [existingBook, setExistingBook] = useState(null);
 
   useEffect(() => {
-    fetchAllBooks();
-    fetchAllAuthors();
-  }, [fetchAllBooks, fetchAllAuthors]);
+    fetchAllBooks(filter);
+  }, [fetchAllBooks, filter]);
 
   const handleEdit = (book) => {
     setExistingBook(book);
@@ -68,11 +65,14 @@ const BookPage = ({
       )}
       <div className="create-bar">
         <h2 className="heading-2 color-blue">Create a Book</h2>
-        <CustomButton onClick={() => setFormOpen(!formOpen)}>
-          Create Book
-        </CustomButton>
+        <div className="flex">
+          <FilterSelect />
+          <CustomButton onClick={() => setFormOpen(!formOpen)}>
+            Create
+          </CustomButton>
+        </div>
       </div>
-      <div className="BookPage__books">
+      <div>
         {books.map((book) => (
           <BookItem
             key={book.id}
@@ -88,23 +88,21 @@ const BookPage = ({
 
 BookPage.propTypes = {
   books: PropTypes.array.isRequired,
-  authors: PropTypes.array.isRequired,
   createBook: PropTypes.func.isRequired,
   fetchAllBooks: PropTypes.func.isRequired,
-  fetchAllAuthors: PropTypes.func.isRequired,
   updateBook: PropTypes.func.isRequired,
   deleteBook: PropTypes.func.isRequired,
+  filter: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({
   books: selectBooks,
-  authors: selectAuthors,
+  filter: selectFilter,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   createBook: (formData) => dispatch(createBook(formData)),
-  fetchAllBooks: () => dispatch(fetchAllBooks()),
-  fetchAllAuthors: () => dispatch(fetchAllAuthors()),
+  fetchAllBooks: (filter) => dispatch(fetchAllBooks(filter)),
   updateBook: (id, formData) => dispatch(updateBook(id, formData)),
   deleteBook: (id) => dispatch(deleteBook(id)),
 });

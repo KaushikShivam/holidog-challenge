@@ -4,6 +4,7 @@ const CustomError = require('../utils/CustomError');
 
 exports.setAuthorID = (req, res, next) => {
   if (req.params.authorId) req.body.author = req.params.authorId;
+  if (req.query.author) req.body.author = req.query.author;
   next();
 };
 

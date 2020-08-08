@@ -5,11 +5,13 @@ import {
   UPDATE_BOOK,
   DELETE_BOOK,
   CLEAR_BOOKS,
+  SELECT_FILTER,
 } from './bookTypes';
 
 const INITIAL_STATE = {
   books: [],
   singleBook: null,
+  filter: '',
 };
 
 const bookReducer = (state = INITIAL_STATE, action) => {
@@ -42,6 +44,11 @@ const bookReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         books: state.books.filter((book) => book.id !== payload),
+      };
+    case SELECT_FILTER:
+      return {
+        ...state,
+        filter: payload,
       };
     case CLEAR_BOOKS:
       return {
