@@ -12,7 +12,13 @@ const authorOne = {
   lastName: 'Martin',
 };
 
+const bookOne = {
+  name: 'Lord of the rings',
+  isbn: 'isbn1',
+};
+
 module.exports = {
   userOne,
   authorOne,
+  bookOne,
 };
