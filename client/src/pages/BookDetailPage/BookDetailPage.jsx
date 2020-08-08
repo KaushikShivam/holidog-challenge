@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 
 import { selectSingleBook } from './../../redux/book/bookSelectors';
@@ -12,20 +13,32 @@ const BookDetailPage = ({ book, fetchBook }) => {
 
   useEffect(() => {
     fetchBook(bookId);
-  }, [fetchBook]);
+  }, [fetchBook, bookId]);
 
   return (
-    <main className="BookDetailPage">
+    <main className="ui-offset">
       {book && (
-        <div className="">
+        <div>
           <h2 className="heading-1 color-blue">{`${book.name}`}</h2>
 
-          <h3 className="heading-2 color-blue-2">{`Author: ${book.author.firstName} ${book.author.lastName}`}</h3>
-          <h3 className="heading-3 color-grey">{`ISBN: ${book.isbn}`}</h3>
+          <div className="card">
+            <h3 className="heading-3">
+              <Link
+                to={`/authors/${book.author.id}`}
+                className="link color-blue-2"
+              >{`Author: ${book.author.firstName} ${book.author.lastName}`}</Link>
+            </h3>
+            <h3 className="heading-3 color-grey">{`ISBN: ${book.isbn}`}</h3>
+          </div>
         </div>
       )}
     </main>
   );
+};
+
+BookDetailPage.propTypes = {
+  book: PropTypes.object,
+  fetchBook: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -25,6 +25,12 @@ const authorSchema = new mongoose.Schema(
   }
 );
 
+authorSchema.virtual('books', {
+  ref: 'Book',
+  foreignField: 'author',
+  localField: '_id',
+});
+
 const Author = mongoose.model('Author', authorSchema);
 
 module.exports = Author;

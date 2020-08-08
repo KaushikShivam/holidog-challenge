@@ -32,7 +32,7 @@ exports.getAuthor = handleAsync(async (req, res, next) => {
   const author = await Author.findOne({
     _id: req.params.id,
     creator: req.user._id,
-  });
+  }).populate('books');
 
   if (!author) {
     return next(new CustomError('No author found with this ID', 404));
