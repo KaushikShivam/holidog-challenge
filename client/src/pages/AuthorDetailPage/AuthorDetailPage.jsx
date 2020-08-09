@@ -8,7 +8,7 @@ import { selectSingleAuthor } from './../../redux/author/authorSelectors';
 
 import { fetchAuthor } from './../../redux/author/authorActions';
 
-const AuthorDetailPage = ({ author, fetchAuthor }) => {
+export const AuthorDetailPage = ({ author, fetchAuthor }) => {
   const { authorId } = useParams();
 
   useEffect(() => {
@@ -16,7 +16,7 @@ const AuthorDetailPage = ({ author, fetchAuthor }) => {
   }, [fetchAuthor, authorId]);
 
   return (
-    <main className="ui-offset">
+    <main className="ui-offset" data-test="page-author-detail">
       {author && (
         <div>
           <h1 className="heading-1">Author Details</h1>

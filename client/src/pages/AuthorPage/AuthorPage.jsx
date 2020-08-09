@@ -16,7 +16,7 @@ import AuthorForm from './../../components/AuthorForm/AuthorForm';
 import AuthorItem from './../../components/AuthorItem/AuthorItem';
 import CustomButton from '../../components/CustomButton/CustomButton';
 
-const AuthorPage = ({
+export const AuthorPage = ({
   authors,
   createAuthor,
   fetchAllAuthors,
@@ -51,7 +51,7 @@ const AuthorPage = ({
   };
 
   return (
-    <main className="ui-offset">
+    <main className="ui-offset" data-test="page-author">
       {formOpen && (
         <AuthorForm
           existingAuthor={existingAuthor}

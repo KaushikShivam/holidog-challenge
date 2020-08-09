@@ -5,7 +5,7 @@ import { App } from './App';
 import { findComponentWithAttr } from '../../utils/testUtils';
 
 describe('<App />', () => {
-  test('renders without error', () => {
+  it('renders without error', () => {
     const wrapper = shallow(
       <App currentUser={{}} token="token" alerts={[]} loadUser={() => {}} />
     );
