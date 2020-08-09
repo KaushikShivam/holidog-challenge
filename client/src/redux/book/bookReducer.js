@@ -8,7 +8,7 @@ import {
   SELECT_FILTER,
 } from './bookTypes';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   books: [],
   singleBook: null,
   filter: '',

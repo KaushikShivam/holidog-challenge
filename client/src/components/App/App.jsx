@@ -35,7 +35,7 @@ const NotFoundPage = lazy(() =>
   import('./../../pages/NotFoundPage/NotFoundPage')
 );
 
-const App = ({ currentUser, token, alerts, loadUser }) => {
+export const App = ({ currentUser, token, alerts, loadUser }) => {
   useEffect(() => {
     setAuthToken(localStorage.jwt);
     loadUser();
@@ -74,7 +74,7 @@ const App = ({ currentUser, token, alerts, loadUser }) => {
   };
 
   return (
-    <div className="App">
+    <div className="App" data-test="component-app">
       <Suspense fallback={<LoadingPage />}>{renderApp()}</Suspense>
     </div>
   );

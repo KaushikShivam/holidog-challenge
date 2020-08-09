@@ -10,7 +10,7 @@ import {
   AUTH_ERROR,
 } from './authTypes';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   currentUser: null,
   fetching: false,
   error: false,

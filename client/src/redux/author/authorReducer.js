@@ -7,7 +7,7 @@ import {
   CLEAR_AUTHORS,
 } from './authorTypes';
 
-const INITIAL_STATE = {
+export const INITIAL_STATE = {
   authors: [],
   singleAuthor: null,
 };
